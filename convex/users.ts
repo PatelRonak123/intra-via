@@ -1,24 +1,22 @@
-import { mutation } from "./_generated/server";
-import { v } from "convex/values";
+import {mutation} from "./_generated/server"
+import {v} from "convex/values";
 
 export const syncUser = mutation({
-  args: {
-    name: v.string(),
-    email: v.string(),
-    clerkId: v.string(),
-    image: v.optional(v.string()),
+  args:{
+    name:v.string(),
+    email:v.string(),
+    clerkId:v.string(),
+    image: v.optional(v.string())
   },
 
-  handler: async (ctx, args) => {
-    const exitingUser = await ctx.db
-      .query("users")
-      .filter((q) => q.eq(q.field("clerkId"), args.clerkId))
-      .first();
+  handler:async(ctx,args)=>{
+    const existingUser = await ctx.db.query("users").filter(q=> q.eq(q.field("clerkId"),args.clerkId)).first();
 
-    if (exitingUser) return;
-    return await ctx.db.insert("users", {
+    if(existingUser) return;
+    return await ctx.db.insert("users",{
       ...args,
-      role: "candidate",
+      role:"candidate",
     });
   },
-});
+
+  })
