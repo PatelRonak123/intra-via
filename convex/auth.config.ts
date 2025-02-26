@@ -1,7 +1,7 @@
 export default {
     providers: [
       {
-        domain: "https://your-issuer-url.clerk.accounts.dev/", // change this to your issuer URL
+        domain: "https://noble-lobster-80.clerk.accounts.dev", 
         applicationID: "convex",
       },
     ]
