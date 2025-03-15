@@ -2,9 +2,11 @@
 import ActionCard from "@/components/ActionCard";
 import { QUICK_ACTIONS } from "@/constants";
 import { useUserRole } from "@/hooks/useUserRole";
+import { useState } from "react";
 
 export default function Home() {
   const { isInterviewer, isCandidate } = useUserRole();
+  const [showModal, setShowModal] = useState(false);
   const handleQuickAction = (title: string) => {};
   return (
     <div className="container max-w-7xl mx-auto p-6">
