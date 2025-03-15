@@ -2,12 +2,39 @@
 import ActionCard from "@/components/ActionCard";
 import { QUICK_ACTIONS } from "@/constants";
 import { useUserRole } from "@/hooks/useUserRole";
+import { useQuery } from "convex/react";
 import { useState } from "react";
+import { api } from "../../../../convex/_generated/api";
+import { useRouter } from "next/navigation"; // changed next/user to next/navigation as i was encountering error
+import MeetingModal from "@/components/MeetingModal";
 
 export default function Home() {
-  const { isInterviewer, isCandidate } = useUserRole();
+  const router = useRouter();
+  const { isInterviewer, isCandidate, isLoading } = useUserRole();
+  const interviews = useQuery(api.interviews.getMyInterviews);
   const [showModal, setShowModal] = useState(false);
-  const handleQuickAction = (title: string) => {};
+  const [modalType, setModalType] = useState<"start" | "join">();
+
+
+  const handleQuickAction = (title: string) => {
+    switch (title) {
+      case "New Call":
+        setModalType("start");
+        setShowModal(true);
+        break;
+      case "Join Interview":
+        setModalType("join");
+        setShowModal(true);
+        break;
+      default:
+        router.push(`/${title.toLowerCase()}`);
+    }
+  };
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="container max-w-7xl mx-auto p-6">
       
@@ -32,6 +59,13 @@ export default function Home() {
               />
             ))}
           </div>
+
+          <MeetingModal
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+            title={modalType === "join" ? "Join Meeting" : "Start Meeting"}
+            isJoinMeeting={modalType === "join"}
+          />
         </>
       ) : (
         <>
