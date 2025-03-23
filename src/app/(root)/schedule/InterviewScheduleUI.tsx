@@ -25,6 +25,7 @@ import UserInfo from "@/components/UserInfo";
 import { Loader2Icon, XIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { TIME_SLOTS } from "@/constants";
+import MeetingCard from "@/components/MeetingCard";
 // import MeetingCard from "@/components/MeetingCard";
 
 function InterviewScheduleUI() {
@@ -295,9 +296,9 @@ function InterviewScheduleUI() {
       ) : interviews.length > 0 ? (
         <div className="spacey-4">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {/* {interviews.map((interview) => (
+            {interviews.map((interview) => (
               <MeetingCard key={interview._id} interview={interview} />
-            ))} */}
+            ))}
           </div>
         </div>
       ) : (
