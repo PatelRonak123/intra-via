@@ -73,35 +73,74 @@ function DashboardPage() {
   //   }
   // };
 
+  // const handleStatusUpdate = async (
+  //   interviewId: Id<"interviews">,
+  //   status: string,
+  //   candidateId: string
+  // ) => {
+  //   try {
+  //     // Find candidate email using candidateId
+  //     const candidate = users?.find((user) => user.clerkId === candidateId);
+
+  //     if (!candidate) {
+  //       toast.error("Candidate not found");
+  //       return;
+  //     }
+
+  //     await updateStatus({ id: interviewId, status });
+
+  //     // Send email notification
+  //     await fetch("/api/sendEmail", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         email: candidate.email,
+  //         status,
+  //         name: candidate.name,
+  //       }),
+  //     });
+
+  //     toast.success(`Interview marked as ${status} and email sent.`);
+  //   } catch (error) {
+  //     toast.error("Failed to update status or send email");
+  //   }
+  // };
+
   const handleStatusUpdate = async (
     interviewId: Id<"interviews">,
     status: string,
     candidateId: string
   ) => {
     try {
-      // Find candidate email using candidateId
+      // Find candidate details
       const candidate = users?.find((user) => user.clerkId === candidateId);
-
+  
       if (!candidate) {
         toast.error("Candidate not found");
         return;
       }
-
+  
+      // Update interview status
       await updateStatus({ id: interviewId, status });
-
+  
       // Send email notification
-      await fetch("/api/sendEmail", {
+      const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: candidate.email,
           status,
-          name: candidate.name,
+          name: candidate.name || "Candidate",
         }),
       });
-
-      toast.success(`Interview marked as ${status} and email sent.`);
+  
+      if (response.ok) {
+        toast.success(`Interview marked as ${status} and email sent.`);
+      } else {
+        toast.error("Failed to send email");
+      }
     } catch (error) {
+      console.error(error);
       toast.error("Failed to update status or send email");
     }
   };
