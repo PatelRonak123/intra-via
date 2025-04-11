@@ -9,7 +9,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       <WebView
-        source={{ uri: "http://192.168.228.108:3000" }}
+        source={{ uri: "http://192.168.1.4:3000" }}
         style={{ flex: 1 }}
       />
     </SafeAreaView>

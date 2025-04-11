@@ -15,7 +15,7 @@ const config: CapacitorConfig = {
   appName: "IntraVia",
   webDir: ".next", // Change from 'public' to '.next'
   server: {
-    url: "http://192.168.228.108:3000", // Replace with your local IP
+    url: "http://192.168.1.4:3000", // Replace with your local IP
     cleartext: true,
   },
   // bundledWebRuntime: false // Removed as it is not a valid property
