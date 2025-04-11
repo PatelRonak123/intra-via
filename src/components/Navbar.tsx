@@ -1,8 +1,9 @@
 import { ModeToggle } from "./ModeToggle";
 import Link from "next/link";
-import { CodeIcon } from "lucide-react";
+import { SquareUserRound } from "lucide-react";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import DasboardBtn from "./DasboardBtn";
+
 function Navbar() {
   return (
     <nav className="border-b">
@@ -12,8 +13,8 @@ function Navbar() {
           href="/"
           className="flex items-center gap-2 font-semibold text-2xl mr-6 font-mono hover:opacity-80 transition-opacity"
         >
-          <CodeIcon className="size-8 text-emerald-500" />
-          <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
+          <SquareUserRound className="size-8 text-emerald-500"/>
+          <span className="animate-text bg-gradient-to-r from-[#ec4899] via-[#f59e0b] to-[#0ea5e9] bg-clip-text text-transparent drop-shadow-md">
             IntraVia
           </span>
         </Link>

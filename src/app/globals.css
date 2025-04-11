@@ -70,6 +70,56 @@ body {
   }
 }
 
+/* @keyframes textGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+
+@keyframes textGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes mic-vibrate {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.animate-mic-vibrate {
+  animation: mic-vibrate 0.5s infinite;
+}
+
+
+.animate-text {
+  background-size: 200% 200%;
+  animation: textGradientMove 6s ease-in-out infinite;
+}
+
+.animate-text {
+  background-size: 200% 200%;
+  animation: textGradientMove 4s ease infinite;
+}
 
 
 @layer base {

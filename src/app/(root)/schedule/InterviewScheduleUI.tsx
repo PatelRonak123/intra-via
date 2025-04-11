@@ -261,7 +261,7 @@ function InterviewScheduleUI() {
                         <SelectItem key={time} value={time}>
                           {time}
                         </SelectItem>
-                      ))}
+                      ))} 
                     </SelectContent>
                   </Select>
                 </div>
