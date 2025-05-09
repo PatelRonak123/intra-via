@@ -25,10 +25,12 @@ export const TIME_SLOTS = [
   "16:00",
   "16:30",
   "17:00",
+  "10:04",
+  "23:17"
 ];
 
 export const QUICK_ACTIONS = [
-  {
+  { 
     icon: Code2,
     title: "New Call",
     description: "Start an instant call",

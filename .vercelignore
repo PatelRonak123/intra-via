@@ -1,0 +1,6 @@
+node_modules
+.next
+android
+intra-via-apk
+*.pack
+*.node

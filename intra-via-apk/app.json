@@ -21,7 +21,8 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.intravia.newversion",
-      "usesCleartextTraffic": true
+      "usesCleartextTraffic": false,
+      "permissions": ["CAMERA", "RECORD_AUDIO", "INTERNET"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
